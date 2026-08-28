@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — "Ledger & Bloom"
+   A hand-kept ledger crossed with a botanical journal: warm,
+   editorial, quietly confident. No corporate blues, no neon,
+   no stock cream+terracotta.
+   ============================================================ */
+@theme {
+  /* Color: named, deliberate */
+  --color-paper: #FBF7F4;        /* warm porcelain white — background */
+  --color-paper-dim: #F3EDE8;    /* recessed surface / hover */
+  --color-ink: #372B3F;          /* deep plum-charcoal — primary text */
+  --color-ink-soft: #6E5E76;     /* secondary text, muted plum-grey */
+  --color-line: #E7DDD6;         /* hairline borders */
+
+  --color-bloom: #B9707E;        /* dusty rose — primary accent / actions */
+  --color-bloom-deep: #96525F;   /* pressed / dark state of bloom */
+  --color-bloom-tint: #F3E1E1;   /* pale rose surface */
+
+  --color-moss: #7C8C68;         /* sage moss — "on track" / positive (fills, icons) */
+  --color-moss-text: #556343;    /* AA-safe darker moss for text on white/paper */
+  --color-moss-tint: #E7ECDD;
+
+  --color-amber: #C08A3E;        /* clay amber — "approaching limit" (fills, icons) */
+  --color-amber-text: #7D5320;   /* AA-safe darker amber for text on white/paper */
+  --color-amber-tint: #F2E5CD;
+
+  --color-berry: #9C3F4E;        /* deep berry — "over budget" */
+  --color-berry-tint: #F1DCDD;
+
+  /* Type */
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii — soft but not bubbly */
+  --radius-card: 1.25rem;
+  --radius-control: 0.75rem;
+  --radius-pill: 999px;
+
+  /* Shadow — a single soft ambient shadow, used sparingly */
+  --shadow-card: 0 1px 2px rgba(55, 43, 63, 0.04), 0 8px 24px -12px rgba(55, 43, 63, 0.18);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: var(--color-bloom-tint);
+    color: var(--color-bloom-deep);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-bloom-deep);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Tabular figures for every amount in the app — numbers must not jitter */
+.tabular-amount {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* The ledger-stitch divider: a structural device, not decoration —
+   it marks a boundary the way a stitched ledger page does. */
+.stitch-divider {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-line) 0,
+    var(--color-line) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
