@@ -15,7 +15,7 @@ export function MobileNav({ onAddExpense }: MobileNavProps) {
         pb-[env(safe-area-inset-bottom)]"
       aria-label="Primary"
     >
-      <div className="relative grid grid-cols-4 items-center h-16 px-2">
+      <div className="relative grid grid-cols-5 items-center h-16 px-1">
         {left.map((item) => (
           <NavItem key={item.to} {...item} />
         ))}
